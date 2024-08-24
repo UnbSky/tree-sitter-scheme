@@ -221,9 +221,17 @@ module.exports = grammar({
         '"',
         repeat(
           choice(
-            $.escape_sequence,
-            /[^"\\]+/)),
-        '"'),
+            $.string_content,
+            $.escape_sequence
+          )
+        ),
+        '"'
+      ),
+      
+    string_content: _ =>
+      token(
+        /[^"\\]+/
+      ),
 
     escape_sequence: _ =>
       token(
@@ -247,9 +255,23 @@ module.exports = grammar({
 
     list: $ =>
       choice(
-        seq("(", repeat($._token), ")"),
-        seq("[", repeat($._token), "]"),
-        seq("{", repeat($._token), "}")),
+        seq(
+          "(",
+          optional($.first_symbol), // Added recognition for first symbol
+          repeat($._token),
+          ")"),
+        seq(
+          "[",
+          optional($.first_symbol), // Added recognition for first symbol
+          repeat($._token),
+          "]"),
+        seq(
+          "{",
+          optional($.first_symbol), // Added recognition for first symbol
+          repeat($._token),
+          "}")),
+    
+    first_symbol: _ => hidden_node.symbol,
 
     quote: $ =>
       seq(
