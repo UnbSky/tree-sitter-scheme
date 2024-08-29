@@ -156,7 +156,7 @@ module.exports = grammar({
         seq("#;", repeat($._intertoken), $._datum)),
 
     directive: $ =>
-      seq("#!", repeat($._intertoken), hidden_node.symbol),
+      seq("#!", repeat($._intertoken), $._datum),
 
     block_comment: $ =>
       seq("#|",
@@ -321,9 +321,21 @@ module.exports = grammar({
         repeat($._intertoken),
         $._datum),
 
-    vector: $ => seq("#(", repeat($._token), ")"),
+    vector: $ => seq(
+      $.vector_tag,
+      "(", 
+      repeat($._token), 
+      ")"),
 
-    byte_vector: $ => seq("#vu8(", repeat($._token), ")"),
+    vector_tag: _ => "#",
+
+    byte_vector: $ => seq(
+      $.byte_vector_tag, 
+      "(",
+      repeat($._token), 
+      ")"),
+
+    byte_vector_tag: _ => "#vu8",
     // compound datum }}}
   },
 });

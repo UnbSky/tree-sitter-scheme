@@ -20,7 +20,7 @@
     "fields": {},
     "children": {
       "multiple": true,
-      "required": false,
+      "required": true,
       "types": [
         {
           "type": "block_comment",
@@ -32,6 +32,10 @@
         },
         {
           "type": "byte_vector",
+          "named": true
+        },
+        {
+          "type": "byte_vector_tag",
           "named": true
         },
         {
@@ -202,10 +206,22 @@
     "fields": {},
     "children": {
       "multiple": true,
-      "required": false,
+      "required": true,
       "types": [
         {
           "type": "block_comment",
+          "named": true
+        },
+        {
+          "type": "boolean",
+          "named": true
+        },
+        {
+          "type": "byte_vector",
+          "named": true
+        },
+        {
+          "type": "character",
           "named": true
         },
         {
@@ -215,14 +231,65 @@
         {
           "type": "directive",
           "named": true
+        },
+        {
+          "type": "keyword",
+          "named": true
+        },
+        {
+          "type": "list",
+          "named": true
+        },
+        {
+          "type": "number",
+          "named": true
+        },
+        {
+          "type": "quasiquote",
+          "named": true
+        },
+        {
+          "type": "quasisyntax",
+          "named": true
+        },
+        {
+          "type": "quote",
+          "named": true
+        },
+        {
+          "type": "string",
+          "named": true
+        },
+        {
+          "type": "symbol",
+          "named": true
+        },
+        {
+          "type": "syntax",
+          "named": true
+        },
+        {
+          "type": "unquote",
+          "named": true
+        },
+        {
+          "type": "unquote_splicing",
+          "named": true
+        },
+        {
+          "type": "unsyntax",
+          "named": true
+        },
+        {
+          "type": "unsyntax_splicing",
+          "named": true
+        },
+        {
+          "type": "vector",
+          "named": true
         }
       ]
     }
-  },
-  {
-    "type": "first_symbol",
-    "named": true,
-    "fields": {}
   },
   {
     "type": "list",
@@ -1163,7 +1230,7 @@
     "fields": {},
     "children": {
       "multiple": true,
-      "required": false,
+      "required": true,
       "types": [
         {
           "type": "block_comment",
@@ -1244,6 +1311,10 @@
         {
           "type": "vector",
           "named": true
+        },
+        {
+          "type": "vector_tag",
+          "named": true
         }
       ]
     }
@@ -1261,10 +1332,6 @@
     "named": false
   },
   {
-    "type": "#(",
-    "named": false
-  },
-  {
     "type": "#,",
     "named": false
   },
@@ -1278,10 +1345,6 @@
   },
   {
     "type": "#`",
-    "named": false
-  },
-  {
-    "type": "#vu8(",
     "named": false
   },
   {
@@ -1325,11 +1388,19 @@
     "named": true
   },
   {
+    "type": "byte_vector_tag",
+    "named": true
+  },
+  {
     "type": "character",
     "named": true
   },
   {
     "type": "escape_sequence",
+    "named": true
+  },
+  {
+    "type": "first_symbol",
     "named": true
   },
   {
@@ -1346,6 +1417,10 @@
   },
   {
     "type": "symbol",
+    "named": true
+  },
+  {
+    "type": "vector_tag",
     "named": true
   },
   {
